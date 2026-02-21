@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="bn">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,17 +61,17 @@
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
         <div class="lg:col-span-4 no-print">
           <div class="glass p-6 rounded-2xl shadow-sm">
-            <h2 class="text-lg font-bold text-slate-800 border-b pb-2 mb-6">এন্ট্রি ফর্ম</h2>
+            <h2 class="text-lg font-bold text-slate-800 border-b pb-2 mb-6">Entry Form</h2>
             <form id="otForm" class="space-y-4">
               <div class="p-4 bg-blue-50/50 rounded-2xl border border-blue-100 mb-4">
-                <p class="text-[10px] font-bold text-blue-600 uppercase mb-3 underline">প্রধান এন্ট্রি</p>
+                <p class="text-[10px] font-bold text-blue-600 uppercase mb-3 underline">Main Entry</p>
                 <div class="grid grid-cols-2 gap-3">
                   <div class="col-span-2">
-                    <label class="text-xs font-bold text-slate-500 uppercase">কর্মচারীর নাম</label>
+                    <label class="text-xs font-bold text-slate-500 uppercase">Employee Name</label>
                     <input type="text" id="name" required class="w-full p-3 bg-white border rounded-xl outline-none focus:ring-2 focus:ring-blue-500" />
                   </div>
                   <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase">ডিপার্টমেন্ট</label>
+                    <label class="text-xs font-bold text-slate-500 uppercase">Department</label>
                     <select id="dept" required class="w-full p-3 bg-white border rounded-xl outline-none focus:ring-2 focus:ring-blue-500">
                       <option value="Management">Management</option>
                       <option value="Engine">Engine</option>
@@ -81,26 +81,26 @@
                     </select>
                   </div>
                   <div>
-                    <label class="text-xs font-bold text-slate-500 uppercase">তারিখ</label>
+                    <label class="text-xs font-bold text-slate-500 uppercase">Date</label>
                     <input type="date" id="otDate" required class="w-full p-3 bg-white border rounded-xl" />
                   </div>
                   <div class="col-span-2">
-                    <label class="text-xs font-bold text-slate-500 uppercase">বেতন (৳)</label>
+                    <label class="text-xs font-bold text-slate-500 uppercase">Salary (৳)</label>
                     <input type="number" id="salary" required class="w-full p-3 bg-white border rounded-xl" />
                   </div>
                   <div class="col-span-2">
-                    <label class="text-xs font-bold text-slate-500 uppercase">বিবরণ</label>
+                    <label class="text-xs font-bold text-slate-500 uppercase">Description</label>
                     <textarea id="description" class="w-full p-3 bg-white border rounded-xl" rows="2"></textarea>
                   </div>
-                  <div><label class="text-xs font-bold text-slate-500 uppercase">শুরু</label><input type="time" id="inTime" required class="w-full p-3 bg-white border rounded-xl" /></div>
-                  <div><label class="text-xs font-bold text-slate-500 uppercase">শেষ</label><input type="time" id="outTime" required class="w-full p-3 bg-white border rounded-xl" /></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase">Start</label><input type="time" id="inTime" required class="w-full p-3 bg-white border rounded-xl" /></div>
+                  <div><label class="text-xs font-bold text-slate-500 uppercase">End</label><input type="time" id="outTime" required class="w-full p-3 bg-white border rounded-xl" /></div>
                 </div>
               </div>
 
               <div id="multiEntryContainer" class="space-y-4"></div>
 
-              <button type="button" onclick="addNewEntryRow()" class="w-full border-2 border-dashed border-blue-300 text-blue-600 py-3 rounded-xl font-bold hover:bg-blue-50 transition text-sm">+ আরও এন্ট্রি যোগ করুন</button>
-              <button type="submit" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-black transition">সব ডাটা যোগ করুন →</button>
+              <button type="button" onclick="addNewEntryRow()" class="w-full border-2 border-dashed border-blue-300 text-blue-600 py-3 rounded-xl font-bold hover:bg-blue-50 transition text-sm">+ Add another entry</button>
+              <button type="submit" class="w-full bg-slate-900 text-white font-bold py-4 rounded-xl shadow-lg hover:bg-black transition">Add all entries →</button>
             </form>
           </div>
         </div>
@@ -117,13 +117,13 @@
             </div>
             <div class="flex gap-2">
                 <button onclick="downloadPDF()" class="bg-emerald-600 text-white px-5 py-2 rounded-xl font-bold text-xs shadow-md uppercase">Download All PDF</button>
-                <button onclick="clearTable()" class="bg-white border text-red-500 px-4 py-2 rounded-xl font-bold text-xs hover:bg-red-50">সব মুছুন</button>
+                <button onclick="clearTable()" class="bg-white border text-red-500 px-4 py-2 rounded-xl font-bold text-xs hover:bg-red-50">Delete All</button>
             </div>
           </div>
 
           <div id="cardsGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
           
-          <div id="emptyState" class="bg-white p-20 rounded-3xl border-2 border-dashed border-slate-200 text-center text-slate-300">কোনো রেকর্ড পাওয়া যায়নি।</div>
+          <div id="emptyState" class="bg-white p-20 rounded-3xl border-2 border-dashed border-slate-200 text-center text-slate-300">No records found.</div>
 
           <div class="mt-8 p-6 bg-white rounded-2xl shadow-sm flex justify-between items-center border-l-8 border-blue-600">
             <span class="font-bold text-slate-500 uppercase tracking-widest text-xs">Total Amount</span>
@@ -182,7 +182,7 @@
           const row = document.createElement('div');
           row.className = "p-4 bg-white border-2 border-slate-200 rounded-2xl relative mb-4 extra-entry";
             const defaultDate = document.getElementById('otDate') ? document.getElementById('otDate').value : '';
-            row.innerHTML = `<button type="button" onclick="this.parentElement.remove()" class="absolute -right-2 -top-2 bg-red-500 text-white w-6 h-6 rounded-full text-xs">✕</button><div class="grid grid-cols-2 gap-3"><div class="col-span-2"><input type="text" placeholder="নাম" class="name-field w-full p-2 border rounded-lg text-sm" required /></div><div><select class="dept-field w-full p-2 border rounded-lg text-sm"><option value="Management">Management</option><option value="Engine">Engine</option><option value="Denting">Denting</option><option value="Painting">Painting</option><option value="Security">Security</option></select></div><div><input type="date" class="date-field w-full p-2 border rounded-lg text-sm" value="${defaultDate}" required /></div><div><input type="number" placeholder="বেতন" class="salary-field w-full p-2 border rounded-lg text-sm" required /></div><div><input type="time" class="in-field w-full p-2 border rounded-lg text-sm" required /></div><div><input type="time" class="out-field w-full p-2 border rounded-lg text-sm" required /></div><div class="col-span-2"><input type="text" placeholder="বিবরণ" class="description-field w-full p-2 border rounded-lg text-sm" /></div></div>`;
+            row.innerHTML = `<button type="button" onclick="this.parentElement.remove()" class="absolute -right-2 -top-2 bg-red-500 text-white w-6 h-6 rounded-full text-xs">✕</button><div class="grid grid-cols-2 gap-3"><div class="col-span-2"><input type="text" placeholder="Name" class="name-field w-full p-2 border rounded-lg text-sm" required /></div><div><select class="dept-field w-full p-2 border rounded-lg text-sm"><option value="Management">Management</option><option value="Engine">Engine</option><option value="Denting">Denting</option><option value="Painting">Painting</option><option value="Security">Security</option></select></div><div><input type="date" class="date-field w-full p-2 border rounded-lg text-sm" value="${defaultDate}" required /></div><div><input type="number" placeholder="Salary" class="salary-field w-full p-2 border rounded-lg text-sm" required /></div><div><input type="time" class="in-field w-full p-2 border rounded-lg text-sm" required /></div><div><input type="time" class="out-field w-full p-2 border rounded-lg text-sm" required /></div><div class="col-span-2"><input type="text" placeholder="Description" class="description-field w-full p-2 border rounded-lg text-sm" /></div></div>`;
           container.appendChild(row);
       }
       
